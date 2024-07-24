@@ -502,7 +502,7 @@ function AppHome() {
                           <i className="ms-1 fa-solid fa-arrow-right-long"></i>
                         </Link>
                       </div>
-                      <p>{browserName}</p>
+                   
                             
 
                       {brand?.length ? (

@@ -869,7 +869,7 @@ const ViewSubAcc = () => {
                 <div className="row ">
                   <div className="col-12 p-4 Pending-view-main">
                     <div className="row py-2">
-                      <div className="col-md-4 mb-4 d-flex align-items-stretch">
+                      <div className="col-md-3 mb-4 d-flex align-items-stretch">
                         <div className="row view-inner-box border mx-0 w-100">
                           <span className="fw-bold">Company:</span>
                           <div className="col">
@@ -878,7 +878,16 @@ const ViewSubAcc = () => {
                         </div>
                       </div>
 
-                      <div className="col-md-4 mb-4 d-flex align-items-stretch">
+                      <div className="col-md-3 mb-4 d-flex align-items-stretch">
+                        <div className="row view-inner-box border mx-0 w-100">
+                          <span className="fw-bold">Account Number:</span>
+                          <div className="col">
+                            <strong>{user?.accountNumber}</strong>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="col-md-3 mb-4 d-flex align-items-stretch">
                         <div className="row view-inner-box border mx-0 w-100">
                           <span className="fw-bold">DBA:</span>
                           <div className="col">
@@ -886,8 +895,7 @@ const ViewSubAcc = () => {
                           </div>
                         </div>
                       </div>
-
-                      <div className="col-md-4 mb-4 d-flex align-items-stretch">
+                      <div className="col-md-3 mb-4 d-flex align-items-stretch">
                         <div className="row view-inner-box border mx-0 w-100">
                           <span className="fw-bold">
                             Company Address Line 1:
@@ -898,7 +906,7 @@ const ViewSubAcc = () => {
                         </div>
                       </div>
 
-                      <div className="col-md-3 mb-3 d-flex align-items-stretch">
+                      <div className="col-md-3 mb-4 d-flex align-items-stretch">
                         <div className="row view-inner-box border mx-0 w-100">
                           <span className="fw-bold">
                             Company Address Line 2:

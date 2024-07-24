@@ -153,6 +153,12 @@ const ApprovedView = () => {
         width: 100,
       },
       {
+        label: "Account Number",
+        field: "account",
+        sort: "asc",
+        width: 100,
+      },
+      {
         label: "Address",
         field: "address",
         sort: "asc",
@@ -183,8 +189,14 @@ const ApprovedView = () => {
         width: 150,
       },
       {
-        label: "Account Type",
+        label: "QR Type",
         field: "type",
+        sort: "asc",
+        width: 100,
+      },
+      {
+        label: "Account Type",
+        field: "type2",
         sort: "asc",
         width: 100,
       },
@@ -218,14 +230,6 @@ const ApprovedView = () => {
     rows: [],
   });
 
-  // const genQr = async () => {
-  //   const { data } = await axios.get(apiUrl3 + objectId);
-  //   if (!data.error) {
-  //     let datas = data?.results.agent?.qrcode;
-  //     document.getElementById("qrImage").src = datas;
-  //   }
-  // };
-
   useEffect(() => {
     const getUser = async () => {
       const res = await axios.post(apiUrl + "/" + objectId);
@@ -239,6 +243,7 @@ const ApprovedView = () => {
           const returnData = {};
           returnData.name_comp = list?.companyName;
           returnData.name = list?.firstName;
+          returnData.account = list?.accountNumber;
           returnData.number = list?.businessPhoneNumber;
           returnData.address = list?.addressLine1;
           // returnData.pull = list?.pullStatus;
@@ -370,8 +375,18 @@ const ApprovedView = () => {
           returnData.name = list?.firstName;
           returnData.name_comp = list?.user?.companyName;
           returnData.date = moment(list?.createdAt).format("MM/DD/YYYY");
-          returnData.type =
-            list?.email === list?.user?.email ? "Main Account" : "Personal";
+          returnData.type = list?.subUser
+            ? list?.subUser?.firstName === list?.firstName
+              ? "Sub-Account QR"
+              : "Authorized Buyer QR"
+            : list?.email === list?.user?.email
+            ? "Main Account QR"
+            : "Authorized Buyer QR";
+          returnData.type2 = !list?.subUser
+            ? list?.email === list?.user?.email
+              ? "Main Account"
+              : "Main Account"
+            : "Sub-account";
           returnData.Status = (
             <>
               <td className="d-flex justify-content-center" key={list._id}>
@@ -467,6 +482,7 @@ const ApprovedView = () => {
     formData.append("firstName", info?.username);
     formData.append("phoneNumber", info?.phoneNumber);
     formData.append("email", info?.email);
+    formData.append("subUser", info?.subAccount);
     formData.append("user", objectId);
     const { data, error } = await axios.post(AddAgent, formData);
     if (!error) {
@@ -1709,7 +1725,7 @@ const ApprovedView = () => {
                           data-bs-toggle="modal"
                           data-bs-target="#exampleModal22"
                         >
-                          Add Authorized Personal
+                          Add Authorized Buyer
                         </button>
 
                         <Button
@@ -1939,7 +1955,7 @@ const ApprovedView = () => {
               <div className="col-12 design_outter_comman recent_orders shadow">
                 <div className="row comman_header justify-content-between">
                   <div className="col-auto">
-                    <h2 className="main_headers">All Authorized Personals</h2>
+                    <h2 className="main_headers">All Authorized Buyers</h2>
                   </div>
                   <div className="col-auto d-flex"></div>
                 </div>
@@ -2045,7 +2061,7 @@ const ApprovedView = () => {
         <div class="modal-dialog modal-lg modal-dialog-centered ">
           <div class="modal-content shadow">
             <div class="modal-header comman_modal ">
-              <h5 class="modal-title">Add Authorized Personal</h5>
+              <h5 class="modal-title">Add Authorized Buyers</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -2165,6 +2181,7 @@ const ApprovedView = () => {
                               Phone Number
                             </label>
                           </div>
+
                           <div className="form-floating  col-lg-12 col-md-12 col-sm-5 mb-4 select_dropdown ">
                             <select
                               className={classNames(

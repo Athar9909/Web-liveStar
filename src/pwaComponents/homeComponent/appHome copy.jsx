@@ -197,29 +197,29 @@ function AppHome() {
   };
 
 
-  // const redirectToWeb = async (token) => {
-  //   console.log("testing");
-  //   try {
-  //     await window.flutter_inappwebview.callHandler(
-  //       "openExternalBrowser",
-  //       `https://starimporters.com/app/redirect/constantRedirect99/${
-  //         tokenWeb || token
-  //       }`
-  //     );
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  //   document.getElementById("modalCloseRD").click();
-  // };
+  const redirectToWeb = async (token) => {
+    console.log("testing");
+    try {
+      await window.flutter_inappwebview.callHandler(
+        "openExternalBrowser",
+        `https://starimporters.com/app/redirect/constantRedirect99/${
+          tokenWeb || token
+        }`
+      );
+    } catch (err) {
+      console.log(err);
+    }
+    document.getElementById("modalCloseRD").click();
+  };
 
-  // const genToken = async () => {
-  //   const token = await axios.post(TempToken);
-  //   console.log(token.data.results.token);
-  //   setTokenWeb(token.data.results.token);
-  //   if (token?.data.results.token) {
-  //     redirectToWeb(token?.data.results.token);
-  //   }
-  // };
+  const genToken = async () => {
+    const token = await axios.post(TempToken);
+    console.log(token.data.results.token);
+    setTokenWeb(token.data.results.token);
+    if (token?.data.results.token) {
+      redirectToWeb(token?.data.results.token);
+    }
+  };
 
  
   // const onFileSelection = async (event) => {

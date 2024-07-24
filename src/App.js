@@ -161,6 +161,7 @@ import EditPersonal from "./AdminComponent/AdminDashboard/UserManage/EditPersona
 import VisitorManagement from "./AdminComponent/AdminDashboard/VisitorPanel/VisitorManagement";
 import GeneratedQrMain from "./AdminComponent/AdminDashboard/UserManage/GeneratedQrMain";
 import VisitorCard from "./VisitorCard";
+import AppNewArrivalsList from "./pwaComponents/homeComponent/appNewArrivalsList";
 
 function App() {
   const [apiData, setApiData] = useState([]);
@@ -434,6 +435,7 @@ function App() {
               path="/app/webView"
               element={width < 999 ? <WebView /> : <Homepage />}
             />
+
             <Route
               path="/app/downloads"
               element={width < 999 ? <AppDownloads /> : <Homepage />}
@@ -620,6 +622,10 @@ function App() {
             <Route
               path="/app/product-list/Hot-Deal"
               element={<AppHotDealList />}
+            />
+             <Route
+              path="/app/new-arrival-list"
+              element={<AppNewArrivalsList />}
             />
             <Route
               path="/app/product-list/Close-Out"

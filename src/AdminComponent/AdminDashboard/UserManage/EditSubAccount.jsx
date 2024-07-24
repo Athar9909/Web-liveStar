@@ -87,6 +87,8 @@ const EditSubAccount = () => {
     formData.append("salesTaxId", files?.salesTaxId);
     formData.append("accountOwnerId", files?.accountOwnerId);
     formData.append("subAccount", id);
+    formData.append("accountNumber", data?.accountNumber);
+
     formData.append(
       "istobaccoLicenceExpired",
       data?.License ? data?.License : user?.istobaccoLicenceExpired
@@ -165,6 +167,7 @@ const EditSubAccount = () => {
 
   useEffect(() => {
     getUser();
+
   }, []);
 
   const getUser = async () => {
@@ -859,7 +862,7 @@ const EditSubAccount = () => {
                           </div>
                         </div> */}
                       </div>
-                      <div className="form-group col-6 mb-4">
+                      <div className="form-group col-4 mb-4">
                         <label htmlFor="" className="fw-bold fs-6">
                           Company
                         </label>
@@ -880,7 +883,28 @@ const EditSubAccount = () => {
                           </small>
                         )}
                       </div>
-                      <div className="form-group col-6 mb-4">
+                      <div className="form-group col-4 mb-4">
+                        <label htmlFor="" className="fw-bold fs-6">
+                          Account Number
+                        </label>
+                        <input
+                          type="text"
+                          className={classNames(
+                            "form-control  border border-secondary  signup_fields",
+                            { "is-invalid": errors.email }
+                          )}
+                          defaultValue={user?.accountNumber}
+                          name="accountNumber"
+                          id="name"
+                          {...register("accountNumber")}
+                        />
+                        {errors.accountNumber && (
+                          <small className="errorText mx-1 fw-bold">
+                            {errors.accountNumber?.message}
+                          </small>
+                        )}
+                      </div>
+                      <div className="form-group col-4 mb-4">
                         <label htmlFor="DBA" className="fw-bold fs-6">
                           DBA
                         </label>

@@ -1,4 +1,5 @@
-import axios from "axios";import { saveAs } from "file-saver";
+import axios from "axios";
+import { saveAs } from "file-saver";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -828,9 +829,7 @@ const OrderReq = () => {
 
                 <li
                   className={
-                    User?.access?.includes("Visitor Management")
-                      ? ""
-                      : "d-none"
+                    User?.access?.includes("Visitor Management") ? "" : "d-none"
                   }
                 >
                   <Link
@@ -842,7 +841,7 @@ const OrderReq = () => {
                       style={{ position: "relative", left: "4px", top: "3px" }}
                       class="fa fa-layer-group"
                     ></i>{" "}
-                   Visitor Management
+                    Visitor Management
                   </Link>
                 </li>
 
@@ -1101,7 +1100,7 @@ const OrderReq = () => {
                     Visitor Management
                   </Link>
                 </li>
-                
+
                 <li>
                   <Link
                     className=""
@@ -2567,6 +2566,7 @@ const OrderReq = () => {
                             </div>
                           </div>
                         </div>
+
                         <div
                           className="tab-pane fade"
                           id="nav-profile"
@@ -2706,14 +2706,154 @@ const OrderReq = () => {
                             </div>
                           </div>
                         </div>
+
                         <div
                           className="tab-pane fade"
                           id="nav-shared"
                           role="tabpanel"
                           aria-labelledby="nav-shared-tab"
                         >
-                          <div className="row mx-0 "></div>
+                          <div className="row mx-0 ">
+                            <div className="row mx-0 ">
+                              <div className="col-12">
+                                <form
+                                  className="form-design py-4 px-3 help-support-form row align-items-end justify-content-between bg-light border-bottom"
+                                  action=""
+                                >
+                                  <div className="form-group mb-0 col-3">
+                                    <label htmlFor="">From</label>
+                                    <input
+                                      type="date"
+                                      className="form-control"
+                                      name="from"
+                                      id="reqFrom"
+                                      value={values?.from}
+                                      onChange={handleDate}
+                                    />
+                                  </div>
+                                  <div className="form-group mb-0 col-3">
+                                    <label htmlFor="">To</label>
+                                    <input
+                                      type="date"
+                                      className="form-control"
+                                      name="to"
+                                      id="reqTo"
+                                      value={values?.to}
+                                      onChange={handleDate}
+                                    />
+                                  </div>
+                                  <div className="form-group mb-0 col-1 text-center">
+                                    <button
+                                      className="comman_btn rounded"
+                                      onClick={(e) =>
+                                        onQuoteSearch(e, "Pending")
+                                      }
+                                    >
+                                      Search
+                                    </button>
+                                  </div>
+                                  <div className="col-2 text-center">
+                                    <button
+                                      className="comman_btn2 rounded"
+                                      onClick={exporQuotation}
+                                    >
+                                      Export <i class="fa fa-download"></i>
+                                    </button>
+                                  </div>
+                                  <div className=" d -flex col-3">
+                                    <form className="form-design" action="">
+                                      <div className="form-group mb-0 position-relative icons_set">
+                                        <input
+                                          type="text"
+                                          className="form-control bg-white "
+                                          placeholder="Search by Quote
+                                         ID/Company Name"
+                                          name="name"
+                                          id="name"
+                                          onChange={(e) => {
+                                            QuoteSearch(e);
+                                          }}
+                                        />
+                                      </div>
+                                    </form>
+                                  </div>
+                                </form>
+                                <div className="row recent_orders_order  ">
+                                  <div className="col-12 comman_table_design px-0">
+                                    <div className="table-responsive">
+                                      <table className="table mb-0">
+                                        <thead>
+                                          <tr
+                                            style={{
+                                              backgroundColor: "#f2f2f2",
+                                            }}
+                                          >
+                                            <th>Date</th>
+                                            <th>Company Name</th>
+                                            <th>Mobile Number</th>
+                                            <th>Email</th>
+                                            <th>Request Id</th>
+                                            <th>Status</th>
+                                            <th>QUOTATION REQUEST</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {(sharedQ || [])?.map(
+                                            (item, index) => (
+                                              <tr key={index}>
+                                                <td>
+                                                  {moment(
+                                                    item?.createdAt?.slice(
+                                                      0,
+                                                      10
+                                                    )
+                                                  ).format("MM/DD/YYYY")}
+                                                </td>
+                                                <td>
+                                                  {item?.userId?.companyName ||
+                                                    item?.user?.companyName}
+                                                </td>
+                                                <td>
+                                                  {item?.userId?.phoneNumber ||
+                                                    item?.user?.phoneNumber}
+                                                </td>
+                                                <td>
+                                                  {item?.userId?.email ||
+                                                    item?.user?.email}
+                                                </td>
+                                                <td>{item?.quoteId}</td>
+
+                                                <td>{item?.status}</td>
+                                                <td>
+                                                  <button
+                                                    className="comman_btn table_viewbtn"
+                                                    onClick={() => {
+                                                      navigate(
+                                                        "/OrderRequest/ViewQuotationRequest",
+                                                        {
+                                                          state: {
+                                                            id: item?._id,
+                                                          },
+                                                        }
+                                                      );
+                                                    }}
+                                                  >
+                                                    View
+                                                  </button>
+                                                </td>
+                                              </tr>
+                                            )
+                                          )}
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+
                         <div
                           className="tab-pane fade"
                           id="nav-day"
