@@ -1,0 +1,361 @@
+@media (max-width: 1279px) {
+  a {
+    color: #3e4093;
+    text-decoration: none;
+  }
+  .banner_sider .owl-nav {
+    width: 98%;
+  }
+  .banner_content h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .verification_content h2 {
+    font-size: 30px;
+    margin-bottom: 16px;
+  }
+  .verification_content span {
+    font-size: 15px;
+  }
+  .banner_content h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+  }
+  .banner_slide {
+    height: 420px;
+  }
+  .comman_head h2 {
+    font-size: 32px;
+    margin: 0;
+  }
+  .partsproduct_img img {
+    height: 120px;
+  }
+  .product_show_home img {
+    max-width: 420px;
+  }
+  .brand_box img {
+    height: 70px;
+  }
+  .maga_drop__menus .dropdown_heading {
+    font-size: 17px;
+  }
+  .featured__box img {
+    height: 120px;
+  }
+  .comman_banner h1 {
+    font-size: 30px;
+  }
+  .brands_ul li a img {
+    height: 70px;
+  }
+  .cart_table tr td:first-child {
+    width: 680px;
+  }
+  .product_content a {
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .width_adjust {
+    width: 35%;
+  }
+  .width_adjust_right {
+    width: 65%;
+  }
+  .product_show .carousel-item img {
+    max-width: 50%;
+  }
+  .product_show .carousel-item .productimg_show {
+    height: 450px;
+  }
+  .product_details_text p {
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0;
+  }
+  .offers_head strong {
+    font-size: 14px;
+  }
+  .flavour_box a {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+  .product_details_text h2 {
+    font-size: 20px;
+  }
+  .comman_btn,
+  .comman_btn2 {
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+  .commam_tabs_design .nav-item .nav-link {
+    font-size: 15px;
+    padding: 14px 0;
+  }
+  .featured-details .accordion-body p {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .myaccount_tabs .nav-tabs .nav-link {
+    width: 100%;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .myaccount_tabs .nav-tabs {
+    border: 0;
+    flex-wrap: nowrap;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .verification_content .custom_checkbox label {
+    font-size: 14px !important;
+  }
+  .header_menus li a {
+    font-size: 15px;
+  }
+  .header_bottom {
+    height: 48px;
+  }
+  .header_logo img {
+    max-width: 120px;
+  }
+  .header_menus li a {
+    font-size: 14px;
+  }
+  .banner_content h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .banner_content p {
+    font-size: 15px;
+    line-height: 25px;
+    margin-bottom: 20px !important;
+  }
+  .banner_content {
+    text-align: center !important;
+    padding: 0 70px;
+  }
+  .banner_slide {
+    height: 420px;
+  }
+  .banner_sider .owl-nav button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    font-size: 25px !important;
+  }
+  .social_icon a .count {
+    font-size: 8px;
+  }
+  .header_bottom li .dropdown-menu {
+    top: 133px;
+  }
+  .maga_drop__menus .dropdown_heading {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  .maga_drop__menus ul li a {
+    font-size: 13px;
+  }
+  .maga_drop__menus ul li {
+    margin-bottom: 1px;
+  }
+  .featured__box img {
+    height: 100px;
+  }
+  .comman_btn2,
+  .comman_btn {
+    padding: 12px 27px;
+    font-size: 14px;
+  }
+  .comman_head h2 {
+    font-size: 25px;
+  }
+  .partsproduct_img img {
+    height: 110px;
+  }
+  .partsproduct_img {
+    height: 180px;
+    position: relative;
+  }
+  .product_content a {
+    font-size: 15px;
+  }
+  .product_parts_box {
+    padding: 10px 10px 14px;
+    margin: 0 0 15px;
+  }
+  .product_show_home img {
+    max-width: 320px;
+  }
+  .product_show_home {
+    height: 400px;
+  }
+  .brand_box img {
+    height: 50px;
+  }
+  .brand_box {
+    height: 130px;
+    margin: 2px 10px;
+  }
+  .news_leter_heading h3 {
+    font-size: 21px;
+  }
+  .newsletter_section {
+    padding: 25px 0;
+  }
+  .newsletter_form button {
+    font-size: 14px;
+  }
+  .comman_banner h1 {
+    font-size: 27px;
+  }
+  .breadcrumbs {
+    margin: 4px 0 0 !important;
+  }
+  .comman_banner {
+    height: 160px;
+  }
+  .brands_ul li a img {
+    height: 60px;
+  }
+  .brands_ul li a {
+    height: 160px;
+  }
+  .cart_page .number {
+    display: flex;
+  }
+  .cart_content h3 {
+    font-size: 15px;
+  }
+  .cart_content p {
+    font-size: 13px;
+    margin: 0 0 -3px;
+  }
+  .remove_btn {
+    font-size: 12px;
+    margin-top: -6px;
+  }
+  .cart_table .number input {
+    font-size: 16px;
+    height: 30px;
+  }
+  .cart_table .number span {
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+  }
+  .cart_table tr th {
+    font-size: 14px;
+  }
+  .chosse_location h3 {
+    font-size: 19px;
+    margin-bottom: 20px;
+  }
+  .Checkout_address h2 {
+    font-size: 19px;
+    margin: 0 0 5px;
+  }
+  .Checkout_address p {
+    font-size: 14px;
+  }
+  .custom_radio label {
+    padding-left: 32px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  footer .widget_title {
+    margin-top: 2px;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  .bottom_footer {
+    padding: 20px 0;
+  }
+  .width_adjust {
+    width: 100%;
+    padding: 0;
+  }
+  .checkbox_design label {
+    font-size: 14px !important;
+    padding-left: 33px;
+  }
+  .filter_design {
+    border: 0;
+    padding: 10px 20px;
+    border-bottom: 2px solid #f2f2f2;
+  }
+  .filter_design .accordion-button {
+    font-size: 14px;
+  }
+  .range_box .display {
+    margin-top: 24px;
+    font-size: 14px;
+  }
+  .product_show .carousel-item img {
+    max-width: 30%;
+  }
+  .comman_head p {
+    font-size: 14px;
+    margin: 0;
+  }
+  .form-design .form-control {
+    background: transparent;
+    padding: 15px 14px;
+    font-size: 12px;
+    height: 46px;
+    border: 1px solid #3d3d3d7a;
+  }
+  .form-design .form-floating > label {
+    font-size: 12px;
+    left: 18px;
+    padding: 13px 10px;
+  }
+  .choose_file label {
+    top: 28px;
+    height: 46px;
+  }
+  .form-design .form-control.form-select {
+    padding: 18px 16px 0 !important;
+  }
+  .thankyou_content h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  .thankyou_content p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .cart_product img {
+    height: 90px;
+  }
+  .cart_product {
+    height: 120px;
+    width: 120px;
+  }
+  .cart_content .ordertext {
+    font-size: 14px;
+    font-size: 13px;
+  }
+  .data_main,
+  .data_submain {
+    font-size: 13px;
+  }
+  .myfavourites .partsproduct_img img {
+    height: 94px;
+  }
+  .main_menudata .accordion-body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    display: none;
+  }
+}
