@@ -7,6 +7,7 @@ import ProfileBar from "../ProfileBar";
 import ViewProduct from "../ViewProduct";
 import moment from "moment";
 import { default as ReactSelect } from "react-select";
+import { DatePicker, DateRangePicker } from "rsuite";
 const customStyles = {
   control: (provided) => ({
     ...provided,
@@ -37,7 +38,6 @@ const VisitorManagement = () => {
   const [maxPage, setMaxPage] = useState(1);
   const [allVisitors, setAllVisitor] = useState();
   const [logCounts, setLogCounts] = useState();
-  const [form, setForm] = useState(false);
   const [selectTrainers, setSelectTrainers] = useState([]);
   const [selectedTrainers, setSelectedTrainers] = useState([]);
   const [searchKey, setSearchKey] = useState("");
@@ -46,7 +46,7 @@ const VisitorManagement = () => {
 
   useEffect(() => {
     getAllVisitors();
-  }, [activePage]);
+  }, []);
 
   useEffect(() => {
     if (searchKey?.length > 1) {
@@ -58,10 +58,9 @@ const VisitorManagement = () => {
     setSearchKey(inputValue);
   };
 
-  const handleChange = (selected) => {
-    setSelectedTrainers({
-      optionSelected: selected,
-    });
+  const handleChangeDates = (values) => {
+    console.log(values);
+    getAllVisitors("",values);
   };
 
   const userSearch = async () => {
@@ -84,10 +83,12 @@ const VisitorManagement = () => {
     }
   };
 
-  const getAllVisitors = async (filterKey) => {
+  const getAllVisitors = async (filterKey, dates) => {
+    
     const { data } = await axios.patch(contactList, {
       page: activePage,
       visitType: filterKey,
+      from: dates,
     });
     if (!data.error) {
       setAllVisitor(data.results.visitors?.usersList);
@@ -685,6 +686,7 @@ const VisitorManagement = () => {
                     </div>
                   </Link>
                 </div>
+
                 <div className="col-3 mb-3 d-flex align-items-stretch">
                   <Link
                     onClick={() => getAllVisitors("")}
@@ -807,8 +809,14 @@ const VisitorManagement = () => {
               </div> */}
               <div className="col-12 design_outter_comman recent_orders shadow">
                 <div className="row comman_header justify-content-between">
-                  <div className="col-auto">
+                  <div className="col-2">
                     <h2>Visitors Listings</h2>
+                  </div>
+                  <div className="col">
+                    <DatePicker
+                      placeholder="Filter by Date"
+                      onChange={handleChangeDates}
+                    ></DatePicker>
                   </div>
                 </div>
 
