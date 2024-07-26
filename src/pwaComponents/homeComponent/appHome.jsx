@@ -15,7 +15,6 @@ import {
 import TopProduct from "./appTopProductComponent";
 import { useNavigate } from "react-router-dom";
 import { browserName } from "react-device-detect";
-import axios from "axios";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   appBrandProd,
@@ -24,7 +23,6 @@ import {
   appSubProd,
   searchKeyRemove,
 } from "../../atom";
-import Swal from "sweetalert2";
 import PullToRefresh from "react-simple-pull-to-refresh";
 import Skeleton from "react-loading-skeleton";
 import { SkeletonTheme } from "react-loading-skeleton";
@@ -316,8 +314,8 @@ function AppHome() {
               <div>
                 <AppHeader />
               </div>
-              <Search getSearch={getSearch} />
-              {!search?.length  && (
+              <Search/>
+              {!search?.length && (
                 <div>
                   <div>
                     <div className="hero-wrapper bg-white">
@@ -337,7 +335,7 @@ function AppHome() {
                             >
                               {banner
                                 ?.filter((itm, id) => id != 0 && id < 6)
-                                .map((item) => (
+                                ?.map((item) => (
                                   <div
                                     className=" item slider_image"
                                     onClick={() => {
@@ -373,7 +371,7 @@ function AppHome() {
                             >
                               {banner
                                 ?.filter((itm, id) => id != 0 && id < 6)
-                                .map((item) => (
+                                ?.map((item) => (
                                   <div
                                     className=" item slider_image"
                                     onClick={() => {
@@ -413,13 +411,13 @@ function AppHome() {
                         </div>
                         <div className="row g-2 rtl-flex-d-row-r">
                           {category
-                            .filter((itm, idx) =>
+                            ?.filter((itm, idx) =>
                               browserName === "WebKit" ||
                               browserName === "Chrome WebView"
                                 ? itm && idx < 7
                                 : itm && idx < 7
                             )
-                            .map((item, index) => {
+                            ?.map((item, index) => {
                               return (
                                 <div className="col-3  justify-content-center">
                                   <div
@@ -537,7 +535,7 @@ function AppHome() {
                                   ? itm
                                   : itm
                               )
-                              .map((item, index) => (
+                              ?.map((item, index) => (
                                 <SwiperSlide key={index} className="main_hot">
                                   <div class="">
                                     <div
