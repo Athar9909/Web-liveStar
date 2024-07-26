@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import AppHeader from "./appHeader";
 import AppFooter from "./appFooter";
-import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import { Link } from "react-router-dom";
 import {
