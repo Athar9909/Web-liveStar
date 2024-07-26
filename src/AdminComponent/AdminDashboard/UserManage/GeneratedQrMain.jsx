@@ -255,7 +255,7 @@ const GeneratedQrMain = () => {
                       }}
                     />
                   </div>
-                  <div className="col-6 text-end mb-3 align-end">
+                  <div className="col-6 text-start mb-3 align-end">
                     <label className="text-danger fw-bold">Status</label>
                     <h1 className="fs-6">
                       {user?.status ? "Active" : "In-active"}
@@ -263,7 +263,7 @@ const GeneratedQrMain = () => {
                   </div>
                   <div className="col-6 text-end mb-3">
                     <label className="text-danger fw-bold">ACCOUNT TYPE</label>
-                    <h1 className="comman_heads">
+                    <h1 className="fs-6">
                       {user?.subUser ? "Sub-account" : "Main Account"}
                     </h1>
                   </div>

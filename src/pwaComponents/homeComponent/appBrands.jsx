@@ -80,7 +80,7 @@ function AppBrands() {
                 {brand
                   ?.filter((itm, idx) =>
                     browserName === "WebKit" || browserName === "Chrome WebView"
-                      ? !itm?.isTobacco
+                      ? itm
                       : itm
                   )
                   .map((item, index) => {

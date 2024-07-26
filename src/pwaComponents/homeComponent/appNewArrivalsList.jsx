@@ -222,89 +222,87 @@ function AppNewArrivalsList() {
               <div>
                 {searchKey?.length ? null : (
                   <div className="row p-3">
-                    {(product || [])
-                      .filter(
+                    {/* .filter(
                         (itm, idx) =>
                           itm.category != "639a042ff2f72167b43774de" &&
                           itm.category != "639a7617f2f72167b4377754" &&
                           itm?.productId?.isTobaccoProduct != true
-                      )
-                      .map((item, index) => (
-                        <div class="col-6 mb-3">
-                          <div class="card product-card w-100">
-                            <div class="card-body">
+                      ) */}
+
+                    {(product || [])?.map((item, index) => (
+                      <div class="col-6 mb-3">
+                        <div class="card product-card w-100">
+                          <div class="card-body">
+                            <div class="col-auto">
+                              <Link
+                                class="cart_bttn text-decoration-none"
+                                to=""
+                                onClick={() =>
+                                  addToCartt(
+                                    item?.productId?._id,
+                                    index,
+                                    item,
+                                    item?.productId?.slug
+                                  )
+                                }
+                              >
+                                <i class="fa-light fa-plus "></i>
+                              </Link>
+                            </div>
+                            {token?.length ? (
+                              <a class="wishlist-btn">
+                                {item?.productId?.favourite ? (
+                                  <i
+                                    class="fa fa-heart"
+                                    onClick={() => {
+                                      rmvFromFav(index, item);
+                                    }}
+                                    style={{ color: "#3e4093 " }}
+                                  />
+                                ) : (
+                                  <i
+                                    class="fa fa-heart"
+                                    onClick={() => {
+                                      addToFav(index, item);
+                                    }}
+                                    style={{ color: "#E1E1E1 " }}
+                                  />
+                                )}
+                              </a>
+                            ) : null}
+
+                            <Link
+                              class="product-thumbnail d-block"
+                              to={`/app/product-detail/${item?.productId?.slug}`}
+                              state={{ type: item?.productId?.type }}
+                            >
+                              <img
+                                class="mb-2"
+                                src={
+                                  item?.productId?.type?.flavourImage
+                                    ? item?.productId?.type?.flavourImage
+                                    : item?.productId?.productImage ||
+                                      require("../../assets/img/product.jpg")
+                                }
+                                alt="Product Image not updated"
+                              />
+                            </Link>
+                            <div class="row mt-1 d-flex align-items-center justify-content-between">
                               <div class="col-auto">
                                 <Link
-                                  class="cart_bttn text-decoration-none"
-                                  to=""
-                                  onClick={() =>
-                                    addToCartt(
-                                      item?.productId?._id,
-                                      index,
-                                      item,
-                                      item?.productId?.slug
-                                    )
-                                  }
+                                  class="product-title"
+                                  to={`/app/product-detail/${item?.productId?.slug}`}
+                                  state={{ type: item?.productId?.type }}
                                 >
-                                  <i class="fa-light fa-plus "></i>
+                                  {item?.productId?.unitName}
+                                  <span>-{item?.productId?.type?.flavour}</span>
                                 </Link>
-                              </div>
-                              {token?.length ? (
-                                <a class="wishlist-btn">
-                                  {item?.productId?.favourite ? (
-                                    <i
-                                      class="fa fa-heart"
-                                      onClick={() => {
-                                        rmvFromFav(index, item);
-                                      }}
-                                      style={{ color: "#3e4093 " }}
-                                    />
-                                  ) : (
-                                    <i
-                                      class="fa fa-heart"
-                                      onClick={() => {
-                                        addToFav(index, item);
-                                      }}
-                                      style={{ color: "#E1E1E1 " }}
-                                    />
-                                  )}
-                                </a>
-                              ) : null}
-
-                              <Link
-                                class="product-thumbnail d-block"
-                                to={`/app/product-detail/${item?.productId?.slug}`}
-                                state={{ type: item?.productId?.type }}
-                              >
-                                <img
-                                  class="mb-2"
-                                  src={
-                                    item?.productId?.type?.flavourImage
-                                      ? item?.productId?.type?.flavourImage
-                                      : item?.productId?.productImage ||
-                                        require("../../assets/img/product.jpg")
-                                  }
-                                  alt="Product Image not updated"
-                                />
-                              </Link>
-                              <div class="row mt-1 d-flex align-items-center justify-content-between">
-                                <div class="col-auto">
-                                  <Link
-                                    class="product-title"
-                                    to={`/app/product-detail/${item?.productId?.slug}`}
-                                    state={{ type: item?.productId?.type }}
-                                  >
-                                    {item?.productId?.unitName}
-                                    <span>
-                                      -{item?.productId?.type?.flavour}
-                                    </span>
-                                  </Link>
-                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      ))}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
@@ -312,97 +310,95 @@ function AppNewArrivalsList() {
               <div>
                 {searchKey?.length ? null : (
                   <div className="row p-3 ">
-                    {(product || [])
-                      ?.filter((itm) => !itm?.isTobaccoProduct)
-                      .map((item, index) => (
-                        <div class="col-6 mb-3">
-                          <div class="card product-card w-100">
-                            <div class="card-body">
+                    {(product || [])?.map((item, index) => (
+                      <div class="col-6 mb-3">
+                        <div class="card product-card w-100">
+                          <div class="card-body">
+                            <div class="col-auto">
+                              <Link
+                                class="cart_bttn text-decoration-none"
+                                to=""
+                                onClick={() =>
+                                  addToCartt(
+                                    item?.productId?._id,
+                                    index,
+                                    item,
+                                    item?.productId?.slug,
+                                    item?.price
+                                  )
+                                }
+                              >
+                                <i class="fa-light fa-plus "></i>
+                              </Link>
+                            </div>
+                            {token?.length ? (
+                              <a class="wishlist-btn">
+                                {item?.productId?.favourite ? (
+                                  <i
+                                    class="fa fa-heart"
+                                    onClick={() => {
+                                      rmvFromFav(index, item);
+                                    }}
+                                    style={{ color: "#3e4093 " }}
+                                  />
+                                ) : (
+                                  <i
+                                    class="fa fa-heart"
+                                    onClick={() => {
+                                      addToFav(index, item);
+                                    }}
+                                    style={{ color: "#E1E1E1 " }}
+                                  />
+                                )}
+                              </a>
+                            ) : null}
+
+                            <Link
+                              class="product-thumbnail d-block"
+                              to={`/app/product-detail/${item?.productId?.slug}`}
+                              state={{
+                                type: item?.productId?.type,
+                                offer: item?.price,
+                              }}
+                            >
+                              <img
+                                class="mb-2"
+                                src={
+                                  item?.productId?.type?.flavourImage
+                                    ? item?.productId?.type?.flavourImage
+                                    : item?.productId?.productImage ||
+                                      require("../../assets/img/product.jpg")
+                                }
+                                alt="Product Image not updated"
+                              />
+                            </Link>
+                            <div class="row mt-1 d-flex align-items-center justify-content-between">
                               <div class="col-auto">
                                 <Link
-                                  class="cart_bttn text-decoration-none"
-                                  to=""
-                                  onClick={() =>
-                                    addToCartt(
-                                      item?.productId?._id,
-                                      index,
-                                      item,
-                                      item?.productId?.slug,
-                                      item?.price
-                                    )
-                                  }
+                                  class="product-title"
+                                  style={{
+                                    fontSize: "11px",
+                                  }}
+                                  to={`/app/product-detail/${item?.productId?.slug}`}
+                                  state={{
+                                    type: item?.productId?.type,
+                                    offer: item?.price,
+                                  }}
                                 >
-                                  <i class="fa-light fa-plus "></i>
-                                </Link>
-                              </div>
-                              {token?.length ? (
-                                <a class="wishlist-btn">
-                                  {item?.productId?.favourite ? (
-                                    <i
-                                      class="fa fa-heart"
-                                      onClick={() => {
-                                        rmvFromFav(index, item);
-                                      }}
-                                      style={{ color: "#3e4093 " }}
-                                    />
-                                  ) : (
-                                    <i
-                                      class="fa fa-heart"
-                                      onClick={() => {
-                                        addToFav(index, item);
-                                      }}
-                                      style={{ color: "#E1E1E1 " }}
-                                    />
+                                  {item?.productId?.unitName?.slice(0, 30)}
+                                  {item?.price > 0 && (
+                                    <span className="text-danger fw-bold">
+                                      {" "}
+                                      : ${item?.price}
+                                    </span>
                                   )}
-                                </a>
-                              ) : null}
-
-                              <Link
-                                class="product-thumbnail d-block"
-                                to={`/app/product-detail/${item?.productId?.slug}`}
-                                state={{
-                                  type: item?.productId?.type,
-                                  offer: item?.price,
-                                }}
-                              >
-                                <img
-                                  class="mb-2"
-                                  src={
-                                    item?.productId?.type?.flavourImage
-                                      ? item?.productId?.type?.flavourImage
-                                      : item?.productId?.productImage ||
-                                        require("../../assets/img/product.jpg")
-                                  }
-                                  alt="Product Image not updated"
-                                />
-                              </Link>
-                              <div class="row mt-1 d-flex align-items-center justify-content-between">
-                                <div class="col-auto">
-                                  <Link
-                                    class="product-title"
-                                    style={{
-                                      fontSize: "11px",
-                                    }}
-                                    to={`/app/product-detail/${item?.productId?.slug}`}
-                                    state={{
-                                      type: item?.productId?.type,
-                                      offer: item?.price,
-                                    }}
-                                  >
-                                    {item?.productId?.unitName?.slice(0, 30)}
-                                    {item?.price > 0 && (
-                                      <span className="text-danger fw-bold">
-                                        {" "}
-                                        : ${item?.price}
-                                      </span>
-                                    )}
-                                  </Link>
-                                </div>
+                                </Link>
                               </div>
                             </div>
                           </div>
                         </div>
-                      ))}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>

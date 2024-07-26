@@ -174,8 +174,8 @@ function AppMonthly() {
                     ?.filter((itm, idx) =>
                       browserName === "WebKit" ||
                       browserName === "Chrome WebView"
-                        ? !itm?.productId?.isTobaccoProduct && idx < 4
-                        : itm && idx < 4
+                        ? itm
+                        : itm
                     )
                     .map((item, index) => (
                       <SwiperSlide key={index} className="">

@@ -53,7 +53,7 @@ function AppNewArrivals() {
               {(product || [])
                 ?.filter((itm, idx) =>
                   browserName === "WebKit" || browserName === "Chrome WebView"
-                    ? !itm?.productId?.isTobaccoProduct && idx < 4
+                    ? itm && idx < 4
                     : itm && idx < 4
                 )
                 .map((item, index) => (

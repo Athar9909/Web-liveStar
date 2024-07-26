@@ -76,8 +76,9 @@ function AppCategories() {
                 {categories
                   ?.filter((itm, idx) =>
                     browserName === "WebKit" || browserName === "Chrome WebView"
-                      ? !itm?.isTobacco
+                      ? itm
                       : itm
+                      // !itm?.isTobacco
                   )
                   .map((item, index) => {
                     return (

@@ -309,9 +309,9 @@ function AppCart() {
                                       <Link
                                         to={`/app/product-detail/${item?.productId?.slug}`}
                                         state={{ type: item?.flavour }}
-                                        className={
-                                          item?.isTobacco ? "filter" : ""
-                                        }
+                                        // className={
+                                        //   item?.isTobacco ? "filter" : ""
+                                        // }
                                       >
                                         {item?.productId?.unitName +
                                           "-" +

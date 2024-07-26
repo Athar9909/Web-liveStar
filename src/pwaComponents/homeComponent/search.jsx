@@ -9,7 +9,7 @@ import {
 } from "../httpServices/homeHttpService/homeHttpService";
 import axios from "axios";
 
-const Search = () => {
+const Search = ({ getSearch }) => {
   const [search, setSearch] = useState("");
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ const Search = () => {
   useEffect(() => {
     getProductList();
     setText(search);
+    getSearch(search);
   }, [search]);
 
   const getProductList = async () => {

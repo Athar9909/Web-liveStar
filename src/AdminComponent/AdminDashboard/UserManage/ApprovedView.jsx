@@ -475,25 +475,28 @@ const ApprovedView = () => {
   const onFileSelection = (e, key) => {
     setFiles({ ...files, [key]: e.target.files[0] });
   };
-
+  const [loader2, setLoader2] = useState(false);
   const onSubmit = async (info) => {
+    setLoader2(true);
     let formData = new FormData();
     formData.append("image", files?.videoEdit);
     formData.append("firstName", info?.username);
     formData.append("phoneNumber", info?.phoneNumber);
     formData.append("email", info?.email);
-    formData.append("subUser", info?.subAccount);
+    info?.subAccount !== objectId &&
+      formData.append("subUser", info?.subAccount);
     formData.append("user", objectId);
     const { data, error } = await axios.post(AddAgent, formData);
     if (!error) {
       if (!data.error) {
         document.getElementById("closePers").click();
         Swal.fire({
-          title: "Authorised Personal Added!",
+          title: "Authorised Buyer Added!",
           text: "",
           icon: "success",
           timer: 2000,
         });
+        setLoader2(false);
         getPersonals();
       } else {
         Swal.fire({
@@ -502,6 +505,7 @@ const ApprovedView = () => {
           icon: "error",
           timer: 2000,
         });
+        setLoader2(false);
       }
     }
   };
@@ -2220,9 +2224,15 @@ const ApprovedView = () => {
                           </div>
 
                           <div className="col-12  text-center">
-                            <button type="submit" className="comman_btn">
-                              Save
-                            </button>
+                            {loader2 ? (
+                              <a disabled className="comman_btn bg-secondary">
+                                Updating...
+                              </a>
+                            ) : (
+                              <button type="submit" className="comman_btn">
+                                Save
+                              </button>
+                            )}
                           </div>
                         </>
                       </div>

@@ -209,6 +209,10 @@ function AppHome() {
     }, [500]);
   };
 
+  const getSearch = (data) => {
+    setSearch(data);
+  };
+
   return (
     <>
       <PullToRefresh
@@ -312,254 +316,261 @@ function AppHome() {
               <div>
                 <AppHeader />
               </div>
-              <Search />
-              <div>
+              <Search getSearch={getSearch} />
+              {!search?.length  && (
                 <div>
-                  <div className="hero-wrapper bg-white">
-                    <div className="container">
-                      {browserName === "WebKit" ||
-                      browserName === "Chrome WebView" ? (
-                        <div className="pt-1 px-0 mb-1">
-                          <Carousel
-                            showThumbs={false}
-                            showIndicators={false}
-                            // onChange={onHoverMain}
-                            autoFocus={false}
-                            autoPlay={true}
-                            showStatus={false}
+                  <div>
+                    <div className="hero-wrapper bg-white">
+                      <div className="container">
+                        {browserName === "WebKit" ||
+                        browserName === "Chrome WebView" ? (
+                          <div className="pt-1 px-0 mb-1">
+                            <Carousel
+                              showThumbs={false}
+                              showIndicators={false}
+                              // onChange={onHoverMain}
+                              autoFocus={false}
+                              autoPlay={true}
+                              showStatus={false}
 
-                            // selectedItem={itemNo}
-                          >
-                            {banner
-                              ?.filter((itm, id) => id != 0 && id < 6)
-                              .map((item) => (
-                                <div
-                                  className=" item slider_image"
-                                  onClick={() => {
-                                    item?.isExternalURL
-                                      ? redirectToWeb(item?.url)
-                                      : navigate("/" + item?.url?.slice(26));
-                                  }}
-                                >
-                                  <img
-                                    className="banner_slider_img"
-                                    src={
-                                      item?.banner
-                                        ? item?.banner
-                                        : require("../../assets/img/staticBg.png")
-                                    }
-                                    alt=""
-                                  />
-                                </div>
-                              ))}
-                          </Carousel>
-                        </div>
-                      ) : (
-                        <div className="pt-1 px-0 mb-1">
-                          <Carousel
-                            showThumbs={false}
-                            showIndicators={false}
-                            // onChange={onHoverMain}
-                            autoFocus={false}
-                            autoPlay={true}
-                            showStatus={false}
-
-                            // selectedItem={itemNo}
-                          >
-                            {banner
-                              ?.filter((itm, id) => id != 0 && id < 6)
-                              .map((item) => (
-                                <div
-                                  className=" item slider_image"
-                                  onClick={() => {
-                                    window.location.href = item?.url;
-                                  }}
-                                >
-                                  <img
-                                    className="banner_slider_img"
-                                    src={
-                                      item?.banner
-                                        ? item?.banner
-                                        : require("../../assets/img/staticBg.png")
-                                    }
-                                    alt=""
-                                  />
-                                </div>
-                              ))}
-                          </Carousel>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="product-catagories-wrapper py-1 pb-3  mt-4">
-                    <div className="container">
-                      <div className=" d-flex align-items-center justify-content-between dir-rtl  mb-2">
-                        <h2 className="fs-6 fw-bold text-dark">
-                          Top Categories
-                        </h2>
-                        <Link
-                          className="btn p-0 text-white"
-                          to="/app/Categories"
-                        >
-                          View All
-                          <i className="ms-1 fa-solid fa-arrow-right-long"></i>
-                        </Link>
-                      </div>
-                      <div className="row g-2 rtl-flex-d-row-r">
-                        {category
-                          .filter((itm, idx) =>
-                            browserName === "WebKit" ||
-                            browserName === "Chrome WebView"
-                              ? !itm?.isTobacco && idx < 8
-                              : itm && idx < 7
-                          )
-                          .map((item, index) => {
-                            return (
-                              <div className="col-3  justify-content-center">
-                                <div
-                                  className="catagory-card"
-                                  onClick={() => {
-                                    navigate(`/app/Sub-Categories/${item._id}`);
-                                  }}
-                                  style={{
-                                    backgroundImage: `url(${item?.categoryImage})`,
-                                    backgroundPosition: "center",
-                                    opacity: "unset",
-                                    backgroundSize: "cover",
-                                  }}
-                                ></div>
-
-                                <div className="text-start">
-                                  <span
-                                    style={{
-                                      marginTop: "4px",
-                                      marginLeft: "3px",
-                                      fontSize: "11px",
-                                      lineHeight: "15px",
-                                      display: "block",
+                              // selectedItem={itemNo}
+                            >
+                              {banner
+                                ?.filter((itm, id) => id != 0 && id < 6)
+                                .map((item) => (
+                                  <div
+                                    className=" item slider_image"
+                                    onClick={() => {
+                                      item?.isExternalURL
+                                        ? redirectToWeb(item?.url)
+                                        : navigate("/" + item?.url?.slice(26));
                                     }}
                                   >
-                                    {item?.categoryName}
-                                  </span>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        <div className="col-3 justify-content-center ">
-                          <div
-                            className="catagory-card"
-                            onClick={() => {
-                              navigate("/app/Categories");
-                            }}
-                            style={{
-                              backgroundImage: `url(${image5})`,
-                              backgroundPosition: "center",
-                              opacity: "unset",
-                              backgroundSize: "cover",
-                            }}
-                          ></div>
-                          <div className="text-center">
-                            <span
-                              style={{
-                                marginTop: "4px",
-                                marginLeft: "-30%",
-                                fontSize: "11px",
-                                lineHeight: "15px",
-                                display: "block",
-                              }}
-                            >
-                              {" "}
-                              View All{"    "}
-                            </span>
+                                    <img
+                                      className="banner_slider_img"
+                                      src={
+                                        item?.banner
+                                          ? item?.banner
+                                          : require("../../assets/img/staticBg.png")
+                                      }
+                                      alt=""
+                                    />
+                                  </div>
+                                ))}
+                            </Carousel>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="pt-1 px-0 mb-1">
+                            <Carousel
+                              showThumbs={false}
+                              showIndicators={false}
+                              // onChange={onHoverMain}
+                              autoFocus={false}
+                              autoPlay={true}
+                              showStatus={false}
+
+                              // selectedItem={itemNo}
+                            >
+                              {banner
+                                ?.filter((itm, id) => id != 0 && id < 6)
+                                .map((item) => (
+                                  <div
+                                    className=" item slider_image"
+                                    onClick={() => {
+                                      window.location.href = item?.url;
+                                    }}
+                                  >
+                                    <img
+                                      className="banner_slider_img"
+                                      src={
+                                        item?.banner
+                                          ? item?.banner
+                                          : require("../../assets/img/staticBg.png")
+                                      }
+                                      alt=""
+                                    />
+                                  </div>
+                                ))}
+                            </Carousel>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </div>
-                  <div className=" py-2">
-                    <AppNewArrivals />
-                  </div>
-                  <AppMonthly />
 
-                  <AppClosingOut />
-
-                  <div className=" py-2">
-                    <TopProduct />
-                  </div>
-
-                  <AppHotDeals />
-                  <div className="flash-sale-wrapper py-2  pb-3  shadow mb-0">
-                    <div className="container">
-                      <div className="d-flex align-items-center justify-content-between rtl-flex-d-row-r mt-2 mb-3">
-                        <h6 className="fs-6 fw-bold">Popular Brands</h6>
-                        <Link
-                          className="btn p-0"
-                          to="/app/brands"
-                          state={{ ki: "kjh" }}
-                        >
-                          View All
-                          <i className="ms-1 fa-solid fa-arrow-right-long"></i>
-                        </Link>
-                      </div>
-                   
-                            
-
-                      {brand?.length ? (
-                        <Swiper
-                          slidesPerView={4}
-                          spaceBetween={6}
-                          autoplay={{
-                            delay: 3000,
-                            disableOnInteraction: true,
-                            reverseDirection: true,
-                            waitForTransition: true,
-                          }}
-                          loop={true}
-                          modules={[FreeMode, Pagination, Autoplay, Navigation]}
-                          className="mySwiper"
-                        >
-                          {console.log(browserName)}
-                          {(brand || [])
-                            ?.filter((itm, idx) =>
+                    <div className="product-catagories-wrapper py-1 pb-3  mt-4">
+                      <div className="container">
+                        <div className=" d-flex align-items-center justify-content-between dir-rtl  mb-2">
+                          <h2 className="fs-6 fw-bold text-dark">
+                            Top Categories
+                          </h2>
+                          <Link
+                            className="btn p-0 text-white"
+                            to="/app/Categories"
+                          >
+                            View All
+                            <i className="ms-1 fa-solid fa-arrow-right-long"></i>
+                          </Link>
+                        </div>
+                        <div className="row g-2 rtl-flex-d-row-r">
+                          {category
+                            .filter((itm, idx) =>
                               browserName === "WebKit" ||
                               browserName === "Chrome WebView"
-                                ? !itm?.isTobacco
-                                : itm
+                                ? itm && idx < 7
+                                : itm && idx < 7
                             )
-                            .map((item, index) => (
-                              <SwiperSlide key={index} className="main_hot">
-                                <div class="">
+                            .map((item, index) => {
+                              return (
+                                <div className="col-3  justify-content-center">
                                   <div
+                                    className="catagory-card"
                                     onClick={() => {
-                                      navigate("/app/brands", {
-                                        state: "kjh",
-                                      });
+                                      navigate(
+                                        `/app/Sub-Categories/${item._id}`
+                                      );
                                     }}
-                                    class="catagory-card w-100"
                                     style={{
-                                      backgroundImage: `url(${
-                                        item?.brandImage
-                                          ? item?.brandImage
-                                          : require("../../assets/img/product.jpg")
-                                      })`,
+                                      backgroundImage: `url(${item?.categoryImage})`,
                                       backgroundPosition: "center",
                                       opacity: "unset",
                                       backgroundSize: "cover",
                                     }}
                                   ></div>
+
+                                  <div className="text-start">
+                                    <span
+                                      style={{
+                                        marginTop: "4px",
+                                        marginLeft: "3px",
+                                        fontSize: "11px",
+                                        lineHeight: "15px",
+                                        display: "block",
+                                      }}
+                                    >
+                                      {item?.categoryName}
+                                    </span>
+                                  </div>
                                 </div>
-                              </SwiperSlide>
-                            ))}
-                        </Swiper>
-                      ) : (
-                        ""
-                      )}
+                              );
+                            })}
+                          <div className="col-3 justify-content-center ">
+                            <div
+                              className="catagory-card"
+                              onClick={() => {
+                                navigate("/app/Categories");
+                              }}
+                              style={{
+                                backgroundImage: `url(${image5})`,
+                                backgroundPosition: "center",
+                                opacity: "unset",
+                                backgroundSize: "cover",
+                              }}
+                            ></div>
+                            <div className="text-center">
+                              <span
+                                style={{
+                                  marginTop: "4px",
+                                  marginLeft: "-30%",
+                                  fontSize: "11px",
+                                  lineHeight: "15px",
+                                  display: "block",
+                                }}
+                              >
+                                {" "}
+                                View All{"    "}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    {/* <small>{deviceId}</small> */}
+                    <div className=" py-2">
+                      <AppNewArrivals />
+                    </div>
+                    <AppMonthly />
+
+                    <AppClosingOut />
+
+                    <div className=" py-2">
+                      <TopProduct />
+                    </div>
+
+                    <AppHotDeals />
+                    <div className="flash-sale-wrapper py-2  pb-3  shadow mb-0">
+                      <div className="container">
+                        <div className="d-flex align-items-center justify-content-between rtl-flex-d-row-r mt-2 mb-3">
+                          <h6 className="fs-6 fw-bold">Popular Brands</h6>
+                          <Link
+                            className="btn p-0"
+                            to="/app/brands"
+                            state={{ ki: "kjh" }}
+                          >
+                            View All
+                            <i className="ms-1 fa-solid fa-arrow-right-long"></i>
+                          </Link>
+                        </div>
+
+                        {brand?.length ? (
+                          <Swiper
+                            slidesPerView={4}
+                            spaceBetween={6}
+                            autoplay={{
+                              delay: 3000,
+                              disableOnInteraction: true,
+                              reverseDirection: true,
+                              waitForTransition: true,
+                            }}
+                            loop={true}
+                            modules={[
+                              FreeMode,
+                              Pagination,
+                              Autoplay,
+                              Navigation,
+                            ]}
+                            className="mySwiper"
+                          >
+                            {console.log(browserName)}
+                            {(brand || [])
+                              ?.filter((itm, idx) =>
+                                browserName === "WebKit" ||
+                                browserName === "Chrome WebView"
+                                  ? itm
+                                  : itm
+                              )
+                              .map((item, index) => (
+                                <SwiperSlide key={index} className="main_hot">
+                                  <div class="">
+                                    <div
+                                      onClick={() => {
+                                        navigate("/app/brands", {
+                                          state: "kjh",
+                                        });
+                                      }}
+                                      class="catagory-card w-100"
+                                      style={{
+                                        backgroundImage: `url(${
+                                          item?.brandImage
+                                            ? item?.brandImage
+                                            : require("../../assets/img/product.jpg")
+                                        })`,
+                                        backgroundPosition: "center",
+                                        opacity: "unset",
+                                        backgroundSize: "cover",
+                                      }}
+                                    ></div>
+                                  </div>
+                                </SwiperSlide>
+                              ))}
+                          </Swiper>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      {/* <small>{deviceId}</small> */}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           )}
 

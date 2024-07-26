@@ -211,11 +211,12 @@ function AppBuyAgain() {
               <div className="row mt-0 buyAgain px-3 py-2">
                 {(purchasedProd || [])?.map((item, index) =>
                   item.products
-                    ?.filter((itm, idx) =>
-                      browserName === "WebKit" ||
-                      browserName === "Chrome WebView"
-                        ? !itm?.productIdisTobaccoProduct
-                        : itm
+                    ?.filter(
+                      (itm, idx) =>
+                        browserName === "WebKit" ||
+                        browserName === "Chrome WebView"
+                          ? itm
+                          : itm // ? !itm?.productIdisTobaccoProduct
                     )
                     .map((val, ind) => (
                       <div className="col-12 mb-2 card" key={`${ind}${index}`}>
