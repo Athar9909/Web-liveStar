@@ -187,7 +187,7 @@ const GeneratedQr = () => {
 
           <div className=" py-1 px-3 mt-4" style={{ borderRadius: "20px" }}>
             <div className="row mt-3">
-              <div className="col-6 mb-3">
+              <div className="col-7 mb-3">
                 <img
                   className="border mb-2"
                   id="proImage"
@@ -205,21 +205,37 @@ const GeneratedQr = () => {
                   }}
                 />
               </div>
-              <div className="col-6 text-end mb-3 align-end">
+              <div className="col-6 text-start mb-3">
                 <label className="text-danger fw-bold">Status</label>
                 <h1 className="fs-6">
                   {user?.status ? "Active" : "In-active"}
                 </h1>
               </div>
+              <div className="col-6 text-end mb-3">
+                <label className="text-danger fw-bold">ACCOUNT TYPE</label>
+                <h1 className="fs-6">
+                  {user?.subUser ? "Sub-account" : "Main Account"}
+                </h1>
+              </div>
 
               <div className="col-6 text-start mb-3">
                 <label className="text-danger fw-bold">COMPANY NAME</label>
-                <h1 className="fs-6">{user?.user?.companyName}</h1>
+                <h1 className="fs-6">
+                  {" "}
+                  {user?.subUser
+                    ? user?.subUser?.companyName
+                    : user?.user?.companyName}
+                </h1>
               </div>
 
               <div className="col-6 text-end mb-3">
                 <label className="text-danger fw-bold">ACCOUNT NUMBER</label>
-                <h1 className="fs-6">{user?.user?.accountNumber}</h1>
+                <h1 className="fs-6">
+                  {" "}
+                  {user?.subUser
+                    ? user?.subUser?.accountNumber
+                    : user?.user?.accountNumber ?? "Not Added"}
+                </h1>
               </div>
 
               <div className="col-6 text-start mb-3">

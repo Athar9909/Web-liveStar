@@ -3,7 +3,7 @@ import html2canvas from "html2canvas";
 import { Link, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 
 const GeneratedQrMain = () => {
   const apiUrl = `${process.env.REACT_APP_APIENDPOINTNEW}api/admin/getUser`;
@@ -151,7 +151,7 @@ const GeneratedQrMain = () => {
   const downloadImage = async () => {
     let url = visitorCardUrl;
     console.log(user);
-  
+
     if (url?.length > 4) {
       try {
         const response = await fetch(url);
@@ -175,9 +175,6 @@ const GeneratedQrMain = () => {
       });
     }
   };
-  
-  
-
 
   return (
     <div>
@@ -240,7 +237,7 @@ const GeneratedQrMain = () => {
 
               <div className=" py-1 px-3 mt-4" style={{ borderRadius: "20px" }}>
                 <div className="row mt-3">
-                  <div className="col-6 mb-3">
+                  <div className="col-7 mb-3">
                     <img
                       className="border mb-2"
                       id="proImage"
@@ -250,7 +247,7 @@ const GeneratedQrMain = () => {
                           : require("../../../assets/img/profileDummy.png")
                       }
                       style={{
-                        width: "clamp(60px, 50%, 120px)",
+                        width: "clamp(60px, 40%, 120px)",
                         borderRadius: "12px",
                         maxWidth: "80px",
                         maxHeight: "70px",
@@ -262,6 +259,12 @@ const GeneratedQrMain = () => {
                     <label className="text-danger fw-bold">Status</label>
                     <h1 className="fs-6">
                       {user?.status ? "Active" : "In-active"}
+                    </h1>
+                  </div>
+                  <div className="col-6 text-end mb-3">
+                    <label className="text-danger fw-bold">ACCOUNT TYPE</label>
+                    <h1 className="comman_heads">
+                      {user?.subUser ? "Sub-account" : "Main Account"}
                     </h1>
                   </div>
 

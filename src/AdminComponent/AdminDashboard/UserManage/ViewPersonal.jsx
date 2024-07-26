@@ -698,7 +698,7 @@ const ViewPersonal = () => {
                 <div className="row comman_header justify-content-between">
                   <div className="col-auto">
                     <h2 className="main_headers">
-                      Authorized Personal Details
+                      Authorized Buyer Details
                     </h2>
                   </div>
                   <div className="col-auto">
